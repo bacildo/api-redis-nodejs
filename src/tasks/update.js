@@ -1,16 +1,14 @@
-const Task = require('./../schemas/Task')
+const Task = require("./../schemas/Task");
 
-module.exports = async (req,res) =>{
-  
+module.exports = async (req, res) => {
   try {
-    const {id} = req.params
-    if(!id){
-      return res.status(400).json({err: 'Invalid parameter'})
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ err: "Invalid parameter" });
     }
-   await Task.findByIdAndUpdate(id, req.body)
-   return res.status(204).end()
+    await Task.findByIdAndUpdate(id, req.body);
+    return res.status(204).end();
   } catch (err) {
-    return res.status(500).json({err})
+    return res.status(500).json({ err });
   }
-  
-}
+};
